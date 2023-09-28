@@ -80,11 +80,11 @@ app.post('/messages/save', async (req, res) => {
 
 // About Us
 app.get('/aboutus', async (req, res) => {
-  // load all messages from database
+  // load all messages from database (similar as Message.js)
   try {
     res.json({
-      paragraphs: ["Hello", "world"],
-      photo: "https://m.media-amazon.com/images/I/616Ia9KdBRL._SL1500_.jpg"
+      paragraphs: ["Laura is currently a senior at NYU with a joint major in Computer Science and Data Science. Experienced in programing language including Python, Java, R, SQL, and C. Laura has taken relevant CS and DS courses including Data Structure, Computer Systems Organization, Fundamental Machine Learning, Basic Algorithms, and Agile Software Development. Interested in tech, software development, and data analysis. Interested in topics including customer relationship, healthcare, and digitial agriculture.", "Laura loves animals, especially cats and dog. Although she does not have either of them, she loves chat with people and play wth their dogs in the park. In her spare time, Laura loves visiting museums and baking egg tarts. Her favorite museum is MoMA."],
+      photo: "https://media.licdn.com/dms/image/C5622AQEk40Ux6fzqlg/feedshare-shrink_1280/0/1658959071209?e=1698883200&v=beta&t=2I58t4kb2OQSA_tkvpmsq1w47vkCTXb9fgdNib19m9M"
     })
   } catch (err) {
     console.error(err)
