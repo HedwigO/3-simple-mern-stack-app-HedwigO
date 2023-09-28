@@ -9,9 +9,9 @@ import axios from 'axios'
  */
 const Aboutus = props => {
   const [aboutus, setAboutus] = useState([])
+  const [paragraphList, setParagraphList] = useState([])
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState('')
-  const [feedback, setFeedback] = useState('')
 
   /**
    * A nested function that fetches aboutus from the back-end server.
@@ -23,6 +23,7 @@ const Aboutus = props => {
         // axios bundles up all response data in response.data property
         const aboutus = response.data
         setAboutus(aboutus)
+        setParagraphList(aboutus.paragraphs.map(paragraph => (<p>{paragraph}</p>)))
       })
       .catch(err => {
         const errMsg = JSON.stringify(err, null, 2) // convert error object to a string so we can simply dump it to the screen
@@ -38,24 +39,12 @@ const Aboutus = props => {
    useEffect(() => {
     // fetch messages this once
     fetchAboutus()
-
-    // set a timer to load data from server every n seconds
-    const intervalHandle = setInterval(() => {
-      fetchAboutus()
-    }, 5000)
-
-    // return a function that will be called when this component unloads
-    return e => {
-      // clear the timer, so we don't still load messages when this component is not loaded anymore
-      clearInterval(intervalHandle)
-    }
   }, []) // putting a blank array as second argument will cause this function to run only once when component first loads
-
 
   return (
     <>
       <h1>About Us</h1>
-      <p>{aboutus.description}</p>
+      {paragraphList}
       <img src={aboutus.photo} alt="photo" />
     </>
   )

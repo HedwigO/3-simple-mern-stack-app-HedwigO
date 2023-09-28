@@ -83,7 +83,7 @@ app.get('/aboutus', async (req, res) => {
   // load all messages from database
   try {
     res.json({
-      description: "Hello\nworld",
+      paragraphs: ["Hello", "world"],
       photo: "https://m.media-amazon.com/images/I/616Ia9KdBRL._SL1500_.jpg"
     })
   } catch (err) {
