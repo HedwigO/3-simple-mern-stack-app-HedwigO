@@ -78,5 +78,22 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+// About Us
+app.get('/aboutus', async (req, res) => {
+  // load all messages from database
+  try {
+    res.json({
+      description: "Hello\nworld",
+      photo: "https://m.media-amazon.com/images/I/616Ia9KdBRL._SL1500_.jpg"
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve messages from the database',
+    })
+  }
+})
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
